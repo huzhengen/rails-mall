@@ -12,3 +12,7 @@ rails generate sorcery:install user_activation reset_password  remember_me --onl
 ```
 rails g controller welcome index
 ```
+
+```
+rails g mailer user
+```
