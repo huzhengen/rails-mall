@@ -6,11 +6,10 @@ class Admin::CategoriesController < Admin::BaseController
     if params[:id]
       @category = Category.find(params[:id])
       @categories = @category.children
-                             .page(params[:page] || 1).per_page(params[:per_page] || 10).order('id desc')
     else
       @categories = Category.roots
-                            .page(params[:page] || 1).per_page(params[:per_page] || 10).order('id desc')
     end
+    @categories = @categories.page(params[:page] || 1).per_page(params[:per_page] || 10).order('id desc')
   end
 
   def new
