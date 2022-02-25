@@ -27,3 +27,11 @@ ancestry
 ```
 rails g migration add_ancestry_to_category ancestry:string
 ```
+
+Controller admin::sessions admin::categories
+```
+rails d controller admin::sessions new
+rails g controller admin::sessions new
+rails g controller admin::categories index new
+
+```

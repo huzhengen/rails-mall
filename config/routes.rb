@@ -5,4 +5,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
+
+  namespace :admin do
+    root 'sessions#new'
+    resources :sessions
+    resources :products
+    resources :categories
+  end
 end

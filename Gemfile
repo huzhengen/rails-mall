@@ -32,6 +32,7 @@ gem 'font-awesome-rails'
 gem 'sorcery'
 gem 'jquery-rails'
 gem 'ancestry'
+gem 'will_paginate'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
