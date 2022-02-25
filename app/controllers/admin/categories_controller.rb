@@ -22,7 +22,6 @@ class Admin::CategoriesController < Admin::BaseController
       flash[:notice] = '新建分类成功！'
       redirect_to admin_categories_path
     else
-      flash[:notice] = "新建分类失败！"
       render action: :new
     end
   end
