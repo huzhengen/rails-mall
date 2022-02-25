@@ -3,8 +3,14 @@ class Admin::CategoriesController < Admin::BaseController
   before_action :find_category, only: [:edit, :update, :destroy]
 
   def index
-    @categories = Category.roots
-                          .page(params[:page] || 1).per_page(params[:per_page] || 10).order('id desc')
+    if params[:id]
+      @category = Category.find(params[:id])
+      @categories = @category.children
+                             .page(params[:page] || 1).per_page(params[:per_page] || 10).order('id desc')
+    else
+      @categories = Category.roots
+                            .page(params[:page] || 1).per_page(params[:per_page] || 10).order('id desc')
+    end
   end
 
   def new

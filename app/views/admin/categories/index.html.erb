@@ -5,9 +5,9 @@
 
   <h1>
     <% if @category %>
-      分类:<%= @category.title %>(<%= @categories.total_entries %>)
+      <%= @category.title %>的子分类(<%= @categories.total_entries %>个)
     <% else %>
-      分类(<%= @categories.total_entries %>)
+      一级分类(<%= @categories.total_entries %>个)
     <% end -%>
   </h1>
 </div>
