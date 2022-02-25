@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_24_072306) do
+ActiveRecord::Schema.define(version: 2022_02_25_022346) do
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.integer "weight", default: 0
+    t.integer "products_counter", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["title"], name: "index_categories_on_title"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "category_id"
+    t.string "title"
+    t.integer "amount", default: 0
+    t.text "description"
+    t.string "image"
+    t.string "status", default: "off"
+    t.string "uuid"
+    t.decimal "msrp", precision: 10, scale: 2
+    t.decimal "price", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["status", "category_id"], name: "index_products_on_status_and_category_id"
+    t.index ["title"], name: "index_products_on_title"
+    t.index ["uuid"], name: "index_products_on_uuid", unique: true
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", null: false

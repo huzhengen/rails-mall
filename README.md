@@ -16,3 +16,14 @@ rails g controller welcome index
 ```
 rails g mailer user
 ```
+
+Category Product
+```
+rails g model category
+rails g model product
+```
+
+ancestry
+```
+rails g migration add_ancestry_to_category ancestry:string
+```

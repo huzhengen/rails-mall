@@ -31,6 +31,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'sorcery'
 gem 'jquery-rails'
+gem 'ancestry'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
