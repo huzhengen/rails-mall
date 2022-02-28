@@ -15,6 +15,11 @@ class Product < ApplicationRecord
 
   before_create :set_default_attrs
 
+  module Status
+    On = 'on'
+    Off = 'off'
+  end
+
   private
 
   def set_default_attrs
