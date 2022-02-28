@@ -33,5 +33,9 @@ Controller admin::sessions admin::categories
 rails d controller admin::sessions new
 rails g controller admin::sessions new
 rails g controller admin::categories index new
+```
 
+图片 model
+```
+rails g model product_image
 ```
