@@ -39,3 +39,8 @@ rails g controller admin::categories index new
 ```
 rails g model product_image
 ```
+
+给 product_images 添加索引
+```
+rails g migration add_product_images_index
+```

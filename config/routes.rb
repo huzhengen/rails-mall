@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     root 'sessions#new'
     resources :sessions
     resources :products do
-      resources :product_images, only: [:index, :create, :destroy]
+      resources :product_images, only: [:index, :create, :destroy, :update]
     end
     resources :categories
   end
