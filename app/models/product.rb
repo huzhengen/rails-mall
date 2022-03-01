@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :category
-  has_many :product_images
+  has_many :product_images, dependent: :destroy
 
   validates_presence_of :category_id, message: '请选择分类'
   validates_presence_of :title, message: '请输入商品标题'

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'sessions#new'
     resources :sessions
-    resources :products
+    resources :products do
+      resources :product_images, only: [:index, :create, :destroy]
+    end
     resources :categories
   end
 end

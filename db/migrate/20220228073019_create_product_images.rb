@@ -3,7 +3,7 @@ class CreateProductImages < ActiveRecord::Migration[5.2]
     create_table :product_images do |t|
       t.belongs_to :product
       t.attachment :image
-      t.integer :weight
+      t.integer :weight, default: 0
 
       t.timestamps
     end
