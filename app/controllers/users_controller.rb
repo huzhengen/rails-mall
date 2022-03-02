@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(create_params)
+    @user.uuid = session[:user_uuid]
     if @user.save
       flash[:notice] = '注册成功！'
       redirect_to new_session_path

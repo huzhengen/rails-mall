@@ -44,3 +44,13 @@ rails g model product_image
 ```
 rails g migration add_product_images_index
 ```
+
+购物车 model
+```
+rails g model shopping_cart
+```
+
+给 user 添加 column
+```
+rails g migration add_user_uuid_column
+```
