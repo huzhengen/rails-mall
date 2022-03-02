@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :categories, only: [:show]
+  resources :products, only: [:show]
 
   namespace :admin do
     root 'sessions#new'

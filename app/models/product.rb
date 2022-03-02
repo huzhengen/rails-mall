@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :category
   has_many :product_images, -> { order('weight desc') }, dependent: :destroy
+  has_one :main_product_image, -> { order('weight desc') }, class_name: :ProductImage
 
   validates_presence_of :category_id, message: '请选择分类'
   validates_presence_of :title, message: '请输入商品标题'
@@ -15,6 +16,8 @@ class Product < ApplicationRecord
   validates_presence_of :description, message: '请输入商品描述'
 
   before_create :set_default_attrs
+
+  scope :onshelf, -> { where(status: Status::On) }
 
   module Status
     On = 'on'
