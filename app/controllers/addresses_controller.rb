@@ -28,7 +28,7 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    render action: new
+    render action: :new
   end
 
   def update

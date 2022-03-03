@@ -18,6 +18,8 @@ class Address < ApplicationRecord
     Order = 'order'
   end
 
+  private
+
   def set_as_default_address
     # 如果设置默认地址
     if self.set_as_default.to_i == 1
