@@ -54,3 +54,9 @@ rails g model shopping_cart
 ```
 rails g migration add_user_uuid_column
 ```
+
+地址 model
+```
+rails g model address
+rails g migration add_user_default_address_id
+```

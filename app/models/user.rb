@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :addresses, -> { where(address_type: Address::AddressType::User).order('id desc') }
+  belongs_to :default_address, class_name: :Address
+
   attr_accessor :password, :password_confirmation
 
   validates_presence_of :email, message: '邮箱不能为空'
