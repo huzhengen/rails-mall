@@ -2,7 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :addresses, -> { where(address_type: Address::AddressType::User).order('id desc') }
-  belongs_to :default_address, class_name: :Address
+  # belongs_to :default_address, class_name: :Address
+  belongs_to :default_address, class_name: :Address, optional: true
 
   attr_accessor :password, :password_confirmation
 
