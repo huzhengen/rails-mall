@@ -65,3 +65,9 @@ rails g migration add_user_default_address_id
 ```
 rails g model order
 ```
+
+支付 model
+```
+rails g model payment
+rails g migration add_order_payment_id_column
+```

@@ -9,18 +9,30 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :product
   belongs_to :address
+  belongs_to :payment
 
   before_create :generate_order_no
+
+  module OrderStatus
+    Initial = 'initial'
+    Paid = 'paid'
+  end
+
+  def is_paid?
+    self.status = OrderStatus::Paid
+  end
 
   def self.create_order_from_shopping_carts! user, address, *shopping_carts
     shopping_carts.flatten!
     address_attrs = address.attributes.except!('id', 'created_at', 'updated_at')
+
+    orders = []
     self.transaction do
       order_address = user.addresses.create!(address_attrs.merge(
         'address_type': Address::AddressType::Order
       ))
       shopping_carts.each do |shopping_cart|
-        user.orders.create!(
+        orders << user.orders.create!(
           product: shopping_cart.product,
           address: order_address,
           amount: shopping_cart.amount,
@@ -29,6 +41,7 @@ class Order < ApplicationRecord
       end
       shopping_carts.map(&:destroy!)
     end
+    orders
 
   end
 

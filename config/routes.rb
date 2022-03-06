@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       put :set_default_address
     end
   end
-  resources :payments, only: [:index]
+  resources :payments, only: [:index] do
+    collection do
+      get :generate_pay
+    end
+  end
 
   namespace :admin do
     root 'sessions#new'

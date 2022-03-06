@@ -15,8 +15,8 @@ class OrdersController < ApplicationController
       return
     end
     address = current_user.addresses.find(params[:address_id])
-    Order.create_order_from_shopping_carts!(current_user, address, shopping_carts)
-    redirect_to payments_path
+    orders = Order.create_order_from_shopping_carts!(current_user, address, shopping_carts)
+    redirect_to generate_pay_payments_path(order_nos: orders.map(&:order_no).join(','))
   end
 
   def destroy
