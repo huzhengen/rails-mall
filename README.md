@@ -60,3 +60,8 @@ rails g migration add_user_uuid_column
 rails g model address
 rails g migration add_user_default_address_id
 ```
+
+订单 model
+```
+rails g model order
+```
