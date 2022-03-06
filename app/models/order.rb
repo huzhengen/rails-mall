@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :product
   belongs_to :address
-  belongs_to :payment
+  belongs_to :payment, optional: true
 
   before_create :generate_order_no
 
@@ -19,7 +19,7 @@ class Order < ApplicationRecord
   end
 
   def is_paid?
-    self.status = OrderStatus::Paid
+    self.status == OrderStatus::Paid
   end
 
   def self.create_order_from_shopping_carts! user, address, *shopping_carts
