@@ -19,13 +19,4 @@ class OrdersController < ApplicationController
     redirect_to generate_pay_payments_path(order_nos: orders.map(&:order_no).join(','))
   end
 
-  def destroy
-
-  end
-
-  private
-
-  def order_params
-    params.require(:order).permit(:user_id, :product_id, :address_id, :amount, :total_money)
-  end
 end

@@ -16,6 +16,7 @@ class Payment < ApplicationRecord
 
   def self.create_from_orders! user, *orders
     orders = orders.flatten!
+    # orders.flatten!
 
     payment = nil
     transaction do
@@ -30,7 +31,37 @@ class Payment < ApplicationRecord
       end
     end
     payment
+  end
 
+  def is_success?
+    self.status == PaymentStatus::Success
+  end
+
+  def do_success_payment! options
+    self.transaction do
+      self.transaction_no = options[:trade_no]
+      self.status = Payment::PaymentStatus::Success
+      self.raw_response = options.to_json
+      self.payment_at = Time.now
+      self.save!
+
+      # 更新订单状态
+      self.orders.each do |order|
+        raise "order #{order.order_no} has alreay been paid" if order.is_paid?
+
+        order.status = Order::OrderStatus::Paid
+        order.payment_at = Time.now
+        order.save!
+      end
+    end
+  end
+
+  def do_failed_payment! options
+    self.transaction_no = options[:trade_no]
+    self.status = Payment::PaymentStatus::Failed
+    self.raw_response = options.to_json
+    self.payment_at = Time.now
+    self.save!
   end
 
   private
