@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2022_03_06_074204) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "address_type"
+    t.string "address_type"
     t.string "address"
     t.string "contact_name"
     t.string "cellphone"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2022_03_06_074204) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.integer "weight"
+    t.integer "weight", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id", "weight"], name: "index_product_images_on_product_id_and_weight"
