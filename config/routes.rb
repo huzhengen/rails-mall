@@ -24,6 +24,17 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :dashboard do
+    resources :orders, only: [:index]
+    resources :addresses, only: [:index]
+    scope 'profile' do
+      controller :profile do
+        get :password
+        put :update_password
+      end
+    end
+  end
+
   namespace :admin do
     root 'sessions#new'
     resources :sessions
