@@ -71,3 +71,13 @@ rails g model order
 rails g model payment
 rails g migration add_order_payment_id_column
 ```
+
+给 users 添加 cellphone
+```
+rails g migration add_users_cellphone
+```
+
+手机验证码
+```
+rails g model verify_token
+```

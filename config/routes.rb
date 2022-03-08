@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :failed
     end
   end
+  resources :cellphone_tokens, only: [:create]
 
   namespace :dashboard do
     resources :orders, only: [:index]
