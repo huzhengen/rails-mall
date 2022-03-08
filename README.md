@@ -81,3 +81,8 @@ rails g migration add_users_cellphone
 ```
 rails g model verify_token
 ```
+
+给 users 添加 is_admin 字段
+```
+rails g migration add_users_is_admin_column
+```
