@@ -17,6 +17,9 @@ module RailsMall
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    # Rails 5 中在生产环境下 autoload_paths 并不会自动加载，需要下面的配置重新启用
+    config.enable_dependency_loading = true
+
     config.autoload_paths += %W[#{Rails.root}/lib]
 
     # Settings in config/environments/* take precedence over those specified here.

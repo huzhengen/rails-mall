@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @is_using_email = (params[:user] and !params[:user][:email].nil?)
     @user = User.new(create_params)
-    @user.uuid = session[:user_uuid]
+    @user.uuid = RandomCode.generate_utoken
     update_browser_uuid @user.uuid
     if @user.save
       flash[:notice] = '注册成功！请登录！'
