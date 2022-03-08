@@ -8,8 +8,9 @@ class UsersController < ApplicationController
     @is_using_email = (params[:user] and !params[:user][:email].nil?)
     @user = User.new(create_params)
     @user.uuid = session[:user_uuid]
+    update_browser_uuid @user.uuid
     if @user.save
-      flash[:notice] = '注册成功！'
+      flash[:notice] = '注册成功！请登录！'
       redirect_to new_session_path
     else
       render action: :new
