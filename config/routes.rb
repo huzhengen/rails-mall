@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :categories, only: [:show]
-  resources :products, only: [:show]
+  resources :products, only: [:show] do
+    get :search, on: :collection
+  end
   resources :shopping_carts
   resources :orders
   resources :addresses do
