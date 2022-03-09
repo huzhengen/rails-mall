@@ -86,3 +86,8 @@ rails g model verify_token
 ```
 rails g migration add_users_is_admin_column
 ```
+
+给 products 添加 image_url 字段
+```
+rails g migration add_products_image_url_column 
+```

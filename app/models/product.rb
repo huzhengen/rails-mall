@@ -13,6 +13,7 @@ class Product < ApplicationRecord
   validates_presence_of :price, message: '请输入商品价格'
   validates :msrp, numericality: { message: 'MSRP必须为数字' }, if: proc { |product| !product.msrp.blank? }
   validates :price, numericality: { message: '价格必须为数字' }, if: proc { |product| !product.price.blank? }
+  validates_presence_of :image_url, message: '请输入商品图片链接'
   validates_presence_of :description, message: '请输入商品描述'
 
   before_create :set_default_attrs

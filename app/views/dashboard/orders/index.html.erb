@@ -4,7 +4,8 @@
     <% @orders.each do |order| %>
       <div class="media shopping-cart-row">
         <div class="media-left">
-          <%= image_tag order.product.main_product_image.image.url(:small), class: 'media-object', alt: order.product.title %>
+          <%= image_tag order.product.image_url, class: 'media-object', alt: order.product.title %>
+          <%#= image_tag order.product.main_product_image.image.url(:small), class: 'media-object', alt: order.product.title %>
         </div>
         <div class="media-body">
           <h4 class="media-heading">订单号: <%= order.order_no %></h4>

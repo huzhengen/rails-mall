@@ -24,7 +24,8 @@
     <% @shopping_carts.each do |shopping_cart| %>
       <div class="media shopping-cart-row">
         <div class="media-left">
-          <%= image_tag shopping_cart.product.main_product_image.image.url(:small), class: 'media-object', alt: shopping_cart.product.title %>
+          <%= image_tag shopping_cart.product.image_url, class: 'media-object', alt: shopping_cart.product.title %>
+          <%#= image_tag shopping_cart.product.main_product_image.image.url(:small), class: 'media-object', alt: shopping_cart.product.title %>
         </div>
         <div class="media-body">
           <h4 class="media-heading"><%= shopping_cart.product.title %></h4>

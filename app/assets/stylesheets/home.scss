@@ -17,7 +17,7 @@
 }
 
 .thumbnail {
-  height: 290px;
+  height: 340px;
 
   &.detail {
     height: auto;
@@ -31,6 +31,10 @@
 .media {
   &.shopping-cart-row {
     border-bottom: 1px solid #ccc;
+
+    .media-object {
+      height: 90px;
+    }
 
     &:last-child {
       border-bottom: 0;
